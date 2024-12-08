@@ -1,8 +1,19 @@
-
+<template>
+  <Header></Header>
+  
+  <router-view></router-view>
+  
+</template>
 <script>
-import axios from 'axios';
+import Header from "./components/Header.vue";
+import Home from "./components/Home.vue";
 
+import axios from 'axios';
 export default {
+  components:{
+    Header,
+    Home
+  },
   data() {
     return {
       data: null,
@@ -20,6 +31,7 @@ export default {
                'X-Api-Key': apiKey,
           },
         });
+
         this.data = response.data;
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,14 +39,9 @@ export default {
     },
   },
 };
-</script>
 
-<template>
-  <div>
-    <h1>Data from API:</h1>
-    <li></li>
-  </div>
-</template>
+
+</script>
 
 <style>
 
