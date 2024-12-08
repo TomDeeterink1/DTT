@@ -18,11 +18,15 @@ export default {
     name:'Header'
 }
 </script>
-<style>
+<style scoped>
     header{
         width: 100%;
         padding: 2em 2em;
         box-shadow: 0px 0px 11px 0px rgba(199,191,199,1);
+        display: none;
+        @media screen and (min-width: 980px) {
+           display: block;
+        }
     }
     
     .wrapper{
@@ -32,6 +36,7 @@ export default {
         gap: 4em;
         align-items: center;
         gap: 1em;
+        width: 100%px;
 
         @media screen and (min-width: 980px) {
            gap: 5em; 

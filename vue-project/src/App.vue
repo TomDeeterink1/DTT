@@ -1,7 +1,7 @@
 <template>
   <Header></Header>
   
-  <router-view></router-view>
+  <router-view v-if="data" :houses="data"></router-view>
   
 </template>
 <script>
@@ -33,12 +33,16 @@ export default {
         });
 
         this.data = response.data;
+
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     },
   },
 };
+
+
 
 
 </script>
