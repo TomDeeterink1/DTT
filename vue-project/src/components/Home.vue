@@ -47,22 +47,12 @@ export default {
       </section>
       <section class="_filters">
         <form>
-          <input type="text" placeholder="Search for a house"></input>
+          <input type="search" placeholder="Search for a house"></input>
+          <searc></searc>
         </form>
         <form class="buttons">
-          <input
-              type="radio"
-              name="filter"
-              value="price"
-              @click="setFilter('price')"
-              checked
-            />
-            <input
-              type="radio"
-              name="filter"
-              value="size"
-              @click="setFilter('size')"
-            />
+            <input type="button" name="filter" value="price" @click="setFilter('price')" checked />
+            <input type="button" name="filter" value="size" @click="setFilter('size')" />
         </form>
       </section>
       <div class="_houses">
@@ -70,7 +60,7 @@ export default {
           <li v-for="house in filteredHouses" :key="house.id">
             <p>{{ house.location.street }}</p>
             <p>Price: {{ house.price }}</p>
-            <p>Size: {{ house.size }} sqft</p>
+            <p>Size: {{ house.size }}</p>
           </li>
         </ul>
       </div>
@@ -166,42 +156,35 @@ export default {
 
   .full-section ._filters .buttons input{
     padding: 1em 1em;
-    
+    height: 50px;
   }
 
-  .full-section ._filters .buttons input:nth-child(1):after{
-      position: absolute;
+  .full-section ._filters .buttons input:nth-child(1){
       background-color: var(--tertiar-color-dark);
-      content: "Price";
-      padding: 1em 5em;
-      width: 46%;
+      width: 46vw;
+      height: 50px;
       border-radius: 0.4em 0em 0em 0.4em;
       font-weight: 700;
-  }
-
-  .full-section ._filters .buttons input:nth-child(1):checked{
-    &::after{
+      &:active , &:focus{
       background-color: var(--primary-color);
       color: var(--light);
-    }
+      }
   }
 
-  .full-section ._filters .buttons input:nth-child(2):after{
-      position: absolute;
+    .full-section ._filters .buttons input:nth-child(2){
       background-color: var(--tertiar-color-dark);
-      content: "Size";
-      padding: 1em 5em;
+      width: 46vw;
+      height: 50px;
       border-radius: 0em 0.4em 0.4em 0em;
-      width: 46%;
       font-weight: 700;
-  }
-
-  .full-section ._filters .buttons input:nth-child(2):checked{
-    &::after{
+      &:active , &:focus{
       background-color: var(--primary-color);
       color: var(--light);
-
-    }
+      }
   }
 
+
+
+
+  
 </style>
