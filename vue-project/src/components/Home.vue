@@ -1,16 +1,42 @@
 <script>
-
 export default {
   props: {
     houses: {
       type: Array,
-      default: () => [], 
+      default: () => [], //retrieve right data
     },
   },
-    name: 'Home', 
-}
+  name: 'Home',
+  data() {
+    return {
+      selectedFilter: 'price', //Ask for price as default
+    };
+  },
+  //Use computed for data reactivity
+  computed: {
+    //Function to filter the houses
+    filteredHouses() {
+      //See if the selected filter is equal to price
+      if (this.selectedFilter === 'price') {
+        //Sort the price with a return ... copy's the array. with a + b the prices are set of to eachother and wil be filter as sutch
+        // So when a = bigger then b, it wil go under b. The first item will always be the lower price.
+        // - sign is used for comparing the 2.
+        return [...this.houses].sort((a, b) => a.price - b.price);
+      } else if (this.selectedFilter === 'size') {
+        // - Same principle for the size of a house
+        return [...this.houses].sort((a, b) => a.size - b.size);
+      }
+      return this.houses; // Returns the right filterted list
+    },
+  },
+  //methods is used for javascript functions in templates, without this vue wont see it as a function for in the template
+  methods: {
+    setFilter(filter) {
+      this.selectedFilter = filter; // Update the filter type
+    },
+  },
+};
 </script>
-
 <template>
   <div class="wrapper">
     <section class="full-section">
@@ -24,16 +50,27 @@ export default {
           <input type="text" placeholder="Search for a house"></input>
         </form>
         <form class="buttons">
-          <input type="radio" name="filter" value="Price" checked="checked"> 
-          <input type="radio" name="filter" value="Size"> 
+          <input
+              type="radio"
+              name="filter"
+              value="price"
+              @click="setFilter('price')"
+              checked
+            />
+            <input
+              type="radio"
+              name="filter"
+              value="size"
+              @click="setFilter('size')"
+            />
         </form>
       </section>
       <div class="_houses">
-        <ul v-for="house in houses" :key="house.id">
-          <li>
-            
+        <ul>
+          <li v-for="house in filteredHouses" :key="house.id">
             <p>{{ house.location.street }}</p>
             <p>Price: {{ house.price }}</p>
+            <p>Size: {{ house.size }} sqft</p>
           </li>
         </ul>
       </div>
