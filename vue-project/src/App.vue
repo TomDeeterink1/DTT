@@ -1,18 +1,14 @@
-<template>
-  <Header></Header>
-  
-  <router-view v-if="data" :houses="data"></router-view>
-  
-</template>
 <script>
 import Header from "./components/Header.vue";
 import Home from "./components/Home.vue";
 
 import axios from 'axios';
+import Mobilemenu from "./components/Mobilemenu.vue";
 export default {
   components:{
     Header,
-    Home
+    Home,
+    Mobilemenu
   },
   data() {
     return {
@@ -46,6 +42,15 @@ export default {
 
 
 </script>
+
+
+
+
+<template>
+  <Header></Header>
+  <router-view v-if="data" :houses="data"></router-view>
+  <Mobilemenu></Mobilemenu>
+</template>
 
 <style>
 

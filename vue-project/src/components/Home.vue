@@ -60,8 +60,8 @@ export default {
           <li class="houses_card" v-for="house in filteredHouses" :key="house.id" tabindex="0">
             <a tabindex="1">
               <div class="card_hovermenu">
-                <button><svg width="32" height="32" viewBox="-0.5 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <path d="M4.91666667,14.8888889 C4.91666667,15.3571429 5.60416667,16 6.0625,16 L12.9375,16 C13.3958333,16 14.0833333,15.3571429 14.0833333,14.8888889 L14.0833333,6 L4.91666667,6 L4.91666667,14.8888889 L4.91666667,14.8888889 L4.91666667,14.8888889 Z M15,3.46500003 L12.5555556,3.46500003 L11.3333333,2 L7.66666667,2 L6.44444444,3.46500003 L4,3.46500003 L4,4.93000007 L15,4.93000007 L15,3.46500003 L15,3.46500003 L15,3.46500003 Z" id="path" fill="#000000" sketch:type="MSShapeGroup"></path></g></svg></button>
-                <a><svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.29289 3.70711L1 11V15H5L12.2929 7.70711L8.29289 3.70711Z" fill="#000000"/><path d="M9.70711 2.29289L13.7071 6.29289L15.1716 4.82843C15.702 4.29799 16 3.57857 16 2.82843C16 1.26633 14.7337 0 13.1716 0C12.4214 0 11.702 0.297995 11.1716 0.828428L9.70711 2.29289Z" fill="#000000"/></svg></a>
+                <a><svg width="24" height="24" viewBox="-0.5 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><g id="out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <path d="M4.91666667,14.8888889 C4.91666667,15.3571429 5.60416667,16 6.0625,16 L12.9375,16 C13.3958333,16 14.0833333,15.3571429 14.0833333,14.8888889 L14.0833333,6 L4.91666667,6 L4.91666667,14.8888889 L4.91666667,14.8888889 L4.91666667,14.8888889 Z M15,3.46500003 L12.5555556,3.46500003 L11.3333333,2 L7.66666667,2 L6.44444444,3.46500003 L4,3.46500003 L4,4.93000007 L15,4.93000007 L15,3.46500003 L15,3.46500003 L15,3.46500003 Z" id="path" fill="#000000" sketch:type="MSShapeGroup"></path></g></svg></a>
+                <a><svg width="20" height="20" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><path d="M8.29289 3.70711L1 11V15H5L12.2929 7.70711L8.29289 3.70711Z"/><path d="M9.70711 2.29289L13.7071 6.29289L15.1716 4.82843C15.702 4.29799 16 3.57857 16 2.82843C16 1.26633 14.7337 0 13.1716 0C12.4214 0 11.702 0.297995 11.1716 0.828428L9.70711 2.29289Z"/></svg></a>
               </div>
               <img>
               <div>
@@ -164,9 +164,6 @@ export default {
     border: none;
     font-size: 1em;
     background-color: var(--tertiary-color);
-    &::placeholder{
-      
-    }
   }
 
   /* filter buttons */
@@ -224,49 +221,34 @@ export default {
 
  .houses_card a{
   display: flex;
-  gap: 1em;
+  gap: 0.75em;
   flex-direction: row;
   width: 100%;
-  &:hover > .card_hovermenu{
-    display: block;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1em;
-    right: 2em;
-    & button{
-      border: none;
-      padding: none;
-      background-color: var(--light);
-    }
+  &:focus > img {
+    transition: ease-out 0.3s;
+      transform: scale(105%);
+      cursor: pointer;
   }
-  &:active > .card_hovermenu{
-    display: block;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1em;
-    right: 2em;
-    & button{
-      border: none;
-      padding: none;
-      background-color: var(--light);
-    }
-  }
+
   &:focus > .card_hovermenu{
     display: block;
     position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1em;
+    gap: 0.3em;
     right: 2em;
     & button{
       border: none;
       padding: none;
       background-color: var(--light);
+    }
+
+    & svg{
+      &:focus,:active,:hover{
+        fill: var(--primary-color);
+        cursor: pointer;
+      }
     }
   }
  }
