@@ -43,7 +43,7 @@ export default {
       <section class="_topbar">
         <div></div>
         <h1>Houses</h1>
-        <button><span>Toevoegen</span><img src="../assets/images/plus-large-svgrepo-com.svg"></button>
+        <button><span>Create new</span><svg width="16" height="16" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><path d="M4 12H20M12 4V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </section>
       <section class="_filters">
         <form action="post">
@@ -97,9 +97,9 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
     @media screen and (min-width: 980px) {
-          padding: 4em 0em;
+          padding: 4em 1em;
           max-width: 1400px;
           margin: 0 auto;
         }
@@ -113,8 +113,16 @@ export default {
     justify-content: end;
     @media screen and (min-width: 980px) {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          padding: 1em 0em;
+          justify-content: space-between;
+         align-items: center;
+        width: 100%;
+
+        & div:nth-child(1){
+          display: none;
         }
+    }
   }
 
   .full-section ._topbar h1{
@@ -128,24 +136,54 @@ export default {
   .full-section ._topbar button{
     border: none;
     background-color: var( --background-grey);
-    &:hover{
-      cursor: pointer;
-    }
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+    @media screen and (min-width: 980px) {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 1em;
+      padding: 1em 2em;
+      background-color: var(--primary-color);
+      border-radius: 6px;
+      transition: 0.3s ease-out;
+      color: var(--light);
+        &:hover{
+          transition: 0.3s ease-out;
+          transform: scale(94%);
+          cursor: pointer;
+    
+        }
+      }
   }
 
   .full-section ._topbar button span{
     display: none;
     @media screen and (min-width: 980px) {
       display: block;
-        }
+      font-weight: 600;
+      text-transform: uppercase;
+      }
   }
 
-  .full-section ._topbar button img{
+  .full-section ._topbar button > svg{
     display: inline;
     width: 2em;
+    height: 2em;
     position: absolute;
-    right: 1em;
-    margin-top: -12px;
+    border-radius: 2px;
+    right: 2em;
+    background-color: var(--primary-color);
+    @media screen and (min-width: 980px) {
+      position: inherit;
+      margin-top: 0px;
+      right: 0em;
+      width: 1.2em;
+      fill: var(--light);
+      background-color: inherit;
+    }
   }
   
   /* filters */
@@ -154,6 +192,11 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    @media screen and (min-width: 980px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
     
   }
 
@@ -164,6 +207,13 @@ export default {
     border: none;
     font-size: 1em;
     background-color: var(--tertiary-color);
+
+  }
+
+  .full-section ._filters form:nth-child(1){
+    @media screen and (min-width: 980px) {
+      min-width: 400px;
+    }
   }
 
   /* filter buttons */
@@ -174,35 +224,50 @@ export default {
   }
 
   .full-section ._filters .buttons input{
-    padding: 1em 1em;
-    height: 50px;
-  }
+    height: 40px;
+    }
 
   .full-section ._filters .buttons input:nth-child(1){
       background-color: var(--tertiar-color-dark);
       width: 46vw;
-      height: 50px;
       border-radius: 0.4em 0em 0em 0.4em;
       font-weight: 700;
       &:active , &:focus{
       background-color: var(--primary-color);
       color: var(--light);
       }
+      @media screen and (min-width: 410px) and (max-width: 980px) {
+        width: 50vw;
+      }
+      @media screen and (min-width: 980px) {
+      width: inherit;
+      padding: 0em 4em;
+      }
   }
 
     .full-section ._filters .buttons input:nth-child(2){
       background-color: var(--tertiar-color-dark);
       width: 46vw;
-      height: 50px;
       border-radius: 0em 0.4em 0.4em 0em;
       font-weight: 700;
       &:active , &:focus{
       background-color: var(--primary-color);
       color: var(--light);
       }
+      @media screen and (min-width: 410px) and (max-width: 980px) {
+        width: 50vw;
+      }
+      @media screen and (min-width: 980px) {
+        width: inherit;
+      padding: 0em 4em;
+      }
   }
 
   /* Houses list */
+  ._houses{
+    margin-top: -1em;
+  }
+
   ._houses ul{
     padding-inline-start: 0px;
     display: flex;
@@ -217,6 +282,7 @@ export default {
   padding: 1em;
   border-radius: 1em;
   background-color: var(--light);
+  box-shadow: 0px 0px 6px 0px rgb(233, 232, 233);
  }
 
  .houses_card a{

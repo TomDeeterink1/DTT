@@ -19,13 +19,16 @@
         width: 100%;
         bottom: 0;
         box-shadow: 0px 0px 11px 0px rgb(216, 212, 216);
+        @media screen and (min-width: 980px) {
+          display: none;
+        }
     }
     .mobile-menu nav{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 3em;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        justify-items: center;
         background-color: var(--light);
         padding: 1em 2em;
     }

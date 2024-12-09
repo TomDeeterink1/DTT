@@ -24,6 +24,9 @@ export default {
         padding: 2em 2em;
         box-shadow: 0px 0px 11px 0px rgba(199,191,199,1);
         display: none;
+        position: sticky;
+        top: 0px;
+        background-color: var(--light);
         @media screen and (min-width: 980px) {
            display: block;
         }
@@ -36,7 +39,7 @@ export default {
         gap: 4em;
         align-items: center;
         gap: 1em;
-        width: 100%px;
+        width: 100%;
 
         @media screen and (min-width: 980px) {
            gap: 5em; 
